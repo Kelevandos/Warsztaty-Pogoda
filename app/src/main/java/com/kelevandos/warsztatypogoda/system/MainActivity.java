@@ -2,6 +2,7 @@ package com.kelevandos.warsztatypogoda.system;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements WeatherListener, 
      */
     private void pobierzPogode() {
         WeatherProvider provider = new WeatherProvider(this);
-        provider.getWeather("Zabrze");
+        provider.getWeather("Svolvær");
     }
 
     private void setupView() {
@@ -70,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements WeatherListener, 
     @Override
     public void onFailure(Throwable t) {
         Toast.makeText(this, "Coś poszło nie tak", Toast.LENGTH_LONG).show();
+        Log.e(this.getClass().getCanonicalName(), "Error obtaining data:", t);
     }
 
     @Override
