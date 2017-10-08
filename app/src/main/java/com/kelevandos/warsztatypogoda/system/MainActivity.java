@@ -34,9 +34,6 @@ public class MainActivity extends AppCompatActivity implements WeatherListener, 
         pobierzPogode();
     }
 
-    /**
-     * Krok 1: Dodajemy pobieranie danych pogodowych
-     */
     private void pobierzPogode() {
         WeatherProvider provider = new WeatherProvider(this);
         provider.getWeather("Svolvær");
