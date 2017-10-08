@@ -55,6 +55,8 @@
         android:layout_height="56dp"
         android:layout_alignParentBottom="true">
 
+        <!-- Krok 2: Dodajemy możliwość wpisania nazwy miasta -->
+
         <EditText
             android:id="@+id/nazwaMiasta"
             android:layout_width="0dp"

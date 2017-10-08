@@ -53,7 +53,8 @@ public class MainActivity extends AppCompatActivity implements WeatherListener, 
         nazwaMiasta = (EditText) findViewById(R.id.nazwaMiasta);
         pobierz = (Button) findViewById(R.id.pobierz);
 
-        pobierz.setOnClickListener(this);
+        if (pobierz != null)
+            pobierz.setOnClickListener(this);
     }
 
     @Override
