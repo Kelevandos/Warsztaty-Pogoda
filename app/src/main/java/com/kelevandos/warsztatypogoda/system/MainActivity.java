@@ -1,6 +1,5 @@
 package com.kelevandos.warsztatypogoda.system;
 
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,6 +13,7 @@ import com.kelevandos.warsztatypogoda.Pogoda;
 import com.kelevandos.warsztatypogoda.R;
 import com.kelevandos.warsztatypogoda.network.WeatherListener;
 import com.kelevandos.warsztatypogoda.network.WeatherProvider;
+import com.kelevandos.warsztatypogoda.ui.ImageFactory;
 import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity implements WeatherListener, View.OnClickListener {
@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements WeatherListener, 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupView();
-
         pobierzPogode();
     }
 
@@ -48,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements WeatherListener, 
         temperatura = (TextView) findViewById(R.id.temperatura);
         ikona = (ImageView) findViewById(R.id.ikona);
         opis = (TextView) findViewById(R.id.opis);
-        opis.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 
         nazwaMiasta = (EditText) findViewById(R.id.nazwaMiasta);
         pobierz = (Button) findViewById(R.id.pobierz);
@@ -62,7 +60,11 @@ public class MainActivity extends AppCompatActivity implements WeatherListener, 
         miasto.setText(pogoda.miasto);
         temperatura.setText(String.valueOf((int) pogoda.temperatura) + " °C");
         opis.setText(pogoda.opis);
-        Picasso.with(this).load(getIconUrl(pogoda.ikona)).into(ikona);
+        if (ImageFactory.getLocalIdForResponseImage(pogoda.ikona) != -1) {
+            ikona.setImageResource(ImageFactory.getLocalIdForResponseImage(pogoda.ikona));
+        } else {
+            Picasso.with(this).load(getIconUrl(pogoda.ikona)).into(ikona);
+        }
     }
 
     @Override
@@ -77,6 +79,6 @@ public class MainActivity extends AppCompatActivity implements WeatherListener, 
     }
 
     private String getIconUrl(String id) {
-        return "http://openweathermap.org/img/w/" + id + ".png?size=200";
+        return "http://openweathermap.org/img/w/" + id + ".png";
     }
 }
