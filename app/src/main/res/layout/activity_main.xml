@@ -57,25 +57,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp">
 
-        <!-- Krok 2: Dodajemy możliwość wpisania nazwy miasta -->
-
-        <!--<EditText-->
-            <!--android:id="@+id/nazwaMiasta"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_weight="3"-->
-            <!--android:hint="Miasto"-->
-            <!--android:textColor="@android:color/white"-->
-            <!--android:textColorHint="@android:color/white" />-->
-
-        <!--<Button-->
-            <!--android:id="@+id/pobierz"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_weight="1"-->
-            <!--android:background="@null"-->
-            <!--android:text="Pobierz"-->
-            <!--android:textColor="@android:color/white" />-->
+        <!-- TODO Krok 2: Dodajemy możliwość wpisania nazwy miasta -->
 
     </LinearLayout>
 
