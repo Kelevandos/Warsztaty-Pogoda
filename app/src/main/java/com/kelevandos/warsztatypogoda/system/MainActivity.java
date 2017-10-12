@@ -1,9 +1,11 @@
 package com.kelevandos.warsztatypogoda.system;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -77,6 +79,12 @@ public class MainActivity extends AppCompatActivity implements WeatherListener, 
     public void onClick(View view) {
         WeatherProvider provider = new WeatherProvider(this);
         provider.getWeather(nazwaMiasta.getText().toString());
+        hideKeyboard();
+    }
+
+    private void hideKeyboard() {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(pobierz.getWindowToken(), 0);
     }
 
     private String getIconUrl(String id) {
